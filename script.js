@@ -21,7 +21,7 @@ function criandoDivs(multiplo){
 criandoDivs(5);
 
 let clickSelecionar = document.querySelectorAll('#color-palette div')
-
+let clickSelecionarPixel = document.querySelectorAll('.pixel')
 
 function apagando(test){
     for (let index = 0; index < 4; index++) {
@@ -31,13 +31,30 @@ function apagando(test){
 }
 
 
-function recebiClick(eventoDeOrigen){
+function recebeclickPaleta(eventoDeOrigen){
     apagando(clickSelecionar);
     let selecionando = eventoDeOrigen.target;
     selecionando.className='color selected';
 }
 
-clickSelecionar[0].addEventListener("click", recebiClick);
-clickSelecionar[1].addEventListener("click", recebiClick);
-clickSelecionar[2].addEventListener("click", recebiClick);
-clickSelecionar[3].addEventListener("click", recebiClick);
+clickSelecionar[0].addEventListener("click", recebeclickPaleta);
+clickSelecionar[1].addEventListener("click", recebeclickPaleta);
+clickSelecionar[2].addEventListener("click", recebeclickPaleta);
+clickSelecionar[3].addEventListener("click", recebeclickPaleta);
+
+
+
+let tentando;
+
+const board = document.querySelector("#pixel-board")
+
+function recebiClickPixel(event){
+    let selecionandoPixel = event.target;
+    if (selecionandoPixel.classList.contains('pixel')) {
+        let selecionado = document.querySelector('.selected')
+        let corSelecionada = window.getComputedStyle(selecionado)
+        let cor = corSelecionada.getPropertyValue('background-color')
+        selecionandoPixel.style.backgroundColor = cor;
+    }
+}
+board.addEventListener("click", recebiClickPixel);
