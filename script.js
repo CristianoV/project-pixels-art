@@ -1,4 +1,5 @@
 const elementoDiv = document.getElementsByTagName('section');
+const buttonClean = document.getElementById('clear-board')
 
 function criandoDivs(multiplo) {
   for (let index = 0; index < multiplo; index += 1) {
@@ -58,3 +59,13 @@ function recebiClickPixel(event) {
   }
 }
 board.addEventListener("click", recebiClickPixel);
+
+let todosOsPixels = document.querySelectorAll('.pixel')
+
+function apagandoPixels(){
+  for (let index = 0; index < todosOsPixels.length; index++) {
+    todosOsPixels[index].style.background='white'
+}
+}
+
+buttonClean.addEventListener('click', apagandoPixels)
