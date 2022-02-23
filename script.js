@@ -98,6 +98,7 @@ function adicionandoPixels(event) {
   removeQuadro()
   criandoDivs(quantidade);
   }
+  inputPixels.value = ''
 }
 
 buttonVQV.addEventListener('click', adicionandoPixels)
