@@ -1,5 +1,9 @@
 const elementoDiv = document.getElementsByTagName('section');
 const buttonClean = document.getElementById('clear-board')
+const buttonVQV = document.getElementById('generate-board')
+const inputPixels = document.getElementById('board-size')
+const quantidadePixel = document.getElementsByClassName('quantidade')
+
 
 function criandoDivs(multiplo) {
   for (let index = 0; index < multiplo; index += 1) {
@@ -60,12 +64,41 @@ function recebiClickPixel(event) {
 }
 board.addEventListener("click", recebiClickPixel);
 
-let todosOsPixels = document.querySelectorAll('.pixel')
 
 function apagandoPixels(){
+  let todosOsPixels = document.querySelectorAll('.pixel')
   for (let index = 0; index < todosOsPixels.length; index++) {
     todosOsPixels[index].style.background='white'
 }
 }
 
+function removeQuadro() {
+  let quantidadeTotal = quantidadePixel.length
+  for (let index = 0; index < quantidadeTotal; index++) {
+    board.removeChild(quantidadePixel[0])
+    
+  }
+
+}
+
+function adicionandoPixels(event) {
+  let quantidade = inputPixels.value
+  if (quantidade === '') {
+    alert("Board inválido!");
+  }
+  else if(quantidade < 5){
+    removeQuadro()
+    criandoDivs(5)
+  }
+  else if(quantidade > 50){
+    removeQuadro()
+    criandoDivs(50)
+  }
+  else{
+  removeQuadro()
+  criandoDivs(quantidade);
+  }
+}
+
+buttonVQV.addEventListener('click', adicionandoPixels)
 buttonClean.addEventListener('click', apagandoPixels)
