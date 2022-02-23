@@ -65,18 +65,18 @@ function recebiClickPixel(event) {
 board.addEventListener("click", recebiClickPixel);
 
 
-function apagandoPixels(){
+function apagandoPixels() {
   let todosOsPixels = document.querySelectorAll('.pixel')
   for (let index = 0; index < todosOsPixels.length; index++) {
-    todosOsPixels[index].style.background='white'
-}
+    todosOsPixels[index].style.background = 'white'
+  }
 }
 
 function removeQuadro() {
   let quantidadeTotal = quantidadePixel.length
   for (let index = 0; index < quantidadeTotal; index++) {
     board.removeChild(quantidadePixel[0])
-    
+
   }
 
 }
@@ -86,17 +86,17 @@ function adicionandoPixels(event) {
   if (quantidade === '') {
     alert("Board inválido!");
   }
-  else if(quantidade < 5){
+  else if (quantidade < 5) {
     removeQuadro()
     criandoDivs(5)
   }
-  else if(quantidade > 50){
+  else if (quantidade > 50) {
     removeQuadro()
     criandoDivs(50)
   }
-  else{
-  removeQuadro()
-  criandoDivs(quantidade);
+  else {
+    removeQuadro()
+    criandoDivs(quantidade);
   }
   inputPixels.value = ''
 }
